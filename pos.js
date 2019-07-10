@@ -58,10 +58,10 @@ function findRelatedGoods(scanResult){
 function createReceipt(relatedGoods){
     let receiptStr = title + '\n' + delimeter + '\n';
     let total = 0;
-    for(let i = 0; i < relatedGoods.length; i++){
-        receiptStr += relatedGoods[i].name + '\t' + relatedGoods[i].price + '\t' + relatedGoods[i].count + '\n';
-        total += relatedGoods[i].price * relatedGoods[i].count;
-    }
+    relatedGoods.forEach(item => {
+        receiptStr += item.name + '\t' + item.price + '\t' + item.count + '\n';
+        total += item.price
+    })
     receiptStr += delimeter + '\n' + priceText + total;
     return receiptStr;
 }
