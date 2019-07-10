@@ -28,18 +28,18 @@ function isBarcodeValid(barcode){
 function scanBarcodes(barcodes){
     let scanResult = [];
     let map = new Map();
-    for(let i = 0; i < barcodes.length; i++){
-        if(map.has(barcodes[i])){
-            map.set(barcodes[i], map.get(barcodes[i]) + 1);
-        }else{
-            map.set(barcodes[i], 1);
-        }
-    }
+    barcodes.forEach(item => {
+      if(map.has(item)){
+        map.set(item, map.get(item) + 1);
+      }else{
+          map.set(item, 1);
+      }
+    })
     map.forEach((value, key, map) => {
         scanResult.push({id: key, count: value});
     });
     return scanResult;
-}
+  }
 
 function findRelatedGoods(scanResult){
     let relatedGoods = [];
